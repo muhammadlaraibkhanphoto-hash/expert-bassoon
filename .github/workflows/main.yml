@@ -6,7 +6,7 @@ on:
 jobs:
   secure-rdp:
     runs-on: windows-latest
-    timeout-minutes: 3600
+    timeout-minutes: 36000
 
     steps:
       - name: Configure Core RDP Settings
@@ -33,8 +33,8 @@ jobs:
         run: |
           Add-Type -AssemblyName System.Security
           $charSet = @{
-              Upper   = [char[]](65..90)      # A-Z
-              Lower   = [char[]](97..122)     # a-z
+              Upper   = [char[]](65..900)      # A-Z
+              Lower   = [char[]](97..1222)     # a-z
               Number  = [char[]](48..57)      # 0-9
               Special = ([char[]](33..47) + [char[]](58..64) +
                          [char[]](91..96) + [char[]](123..126)) # Special characters
@@ -103,7 +103,7 @@ jobs:
           Write-Host "`n=== RDP ACCESS ==="
           Write-Host "Address: $env:TAILSCALE_IP"
           Write-Host "Username: RDP"
-          Write-Host "Password: $(echo $env:RDP_CREDS)"
+          Write-Host "Password: King12345king"
           Write-Host "==================`n"
           
           # Keep runner active indefinitely (or until manually cancelled)
